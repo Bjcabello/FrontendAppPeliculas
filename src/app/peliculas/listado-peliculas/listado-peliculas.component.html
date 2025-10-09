@@ -19,9 +19,12 @@
           <p class="card-text">Fecha Lanzamiento: {{ pelicula.fechalanzamiento | date:"dd-MMMM-yyyy" }}</p>
           <p class="card-text">Precio: {{ pelicula.precio | currency }}</p>
           <button mat-raised-button color="warn" (click)="removerPelicula(pelicula)">
-            <mat-icon>delete</mat-icon>
+            <mat-icon >delete</mat-icon>
             Eliminar Pelicula
           </button>
+          <div class="mt-2">
+            <app-rating [maximoRating]="5"></app-rating>
+          </div>
         </div>
       </div>
     }

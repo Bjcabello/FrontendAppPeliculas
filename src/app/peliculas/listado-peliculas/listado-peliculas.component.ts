@@ -3,6 +3,8 @@ import { Component, Input, input, OnInit } from '@angular/core';
 import { ListadoGenericoComponent } from "../../compartidos/componentes/listado-generico/listado-generico.component";
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { RatingComponent } from "../../compartidos/componentes/rating/rating.component";
+
 
 @Component({
   selector: 'app-listado-peliculas',
@@ -13,7 +15,8 @@ import { MatIconModule } from '@angular/material/icon';
     ListadoGenericoComponent,
     MatButtonModule,
     MatIconModule,
-  ],
+    RatingComponent
+],
   templateUrl: './listado-peliculas.component.html',
   styleUrl: './listado-peliculas.component.css',
 })
