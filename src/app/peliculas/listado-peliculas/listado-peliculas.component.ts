@@ -1,17 +1,25 @@
 import { CurrencyPipe, DatePipe, UpperCasePipe } from '@angular/common';
 import { Component, Input, input, OnInit } from '@angular/core';
 import { ListadoGenericoComponent } from "../../compartidos/componentes/listado-generico/listado-generico.component";
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-listado-peliculas',
-  imports: [DatePipe, UpperCasePipe, CurrencyPipe, ListadoGenericoComponent],
+  imports: [
+    DatePipe,
+    UpperCasePipe,
+    CurrencyPipe,
+    ListadoGenericoComponent,
+    MatButtonModule,
+    MatIconModule,
+  ],
   templateUrl: './listado-peliculas.component.html',
   styleUrl: './listado-peliculas.component.css',
 })
 export class ListadoPeliculasComponent {
   @Input({ required: true })
   peliculas!: any[];
-
 
   agregarPelicula() {
     this.peliculas.push({
@@ -23,8 +31,9 @@ export class ListadoPeliculasComponent {
     });
   }
   removerPelicula(pelicula: any) {
-  const indice = this.peliculas.findIndex(
-    (peliculaActual: any) => peliculaActual.titulo === pelicula.titulo);
-    this.peliculas.splice(indice,1)
+    const indice = this.peliculas.findIndex(
+      (peliculaActual: any) => peliculaActual.titulo === pelicula.titulo
+    );
+    this.peliculas.splice(indice, 1);
   }
 }

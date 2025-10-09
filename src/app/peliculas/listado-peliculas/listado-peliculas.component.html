@@ -19,7 +19,10 @@
           <h5 class="card-title">{{ $index +1 }} Película: {{ pelicula.titulo | uppercase }}</h5>
           <p class="card-text">Fecha Lanzamiento: {{ pelicula.fechalanzamiento | date:"dd-MMMM-yyyy" }}</p>
           <p class="card-text">Precio: {{ pelicula.precio | currency }}</p>
-          <button class="btn btn-danger" (click)="removerPelicula(pelicula)">Eliminar Pelicula</button>
+          <button mat-raised-button color="warn" (click)="removerPelicula(pelicula)">
+            <mat-icon>delete</mat-icon>
+            Eliminar Pelicula
+          </button>
         </div>
       </div>
     }
