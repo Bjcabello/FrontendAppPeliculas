@@ -2,13 +2,14 @@ import { Component, NgModule, OnInit } from '@angular/core';
 import { runPostSignalSetFn } from '@angular/core/primitives/signals';
 import { RouterOutlet } from '@angular/router';
 import { ListadoPeliculasComponent } from "./peliculas/listado-peliculas/listado-peliculas.component";
+import { MenuComponent } from "./compartidos/componentes/menu/menu.component";
 
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [ListadoPeliculasComponent],
+  imports: [ListadoPeliculasComponent, MenuComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
