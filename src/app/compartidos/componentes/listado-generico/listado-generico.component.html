@@ -1,0 +1,25 @@
+@if (!listado)
+{
+  <div #cargando>
+    <ng-content cargando>
+      @if (!cargando.innerHTML.trim())
+      {
+        <img src="loading.gif" class="mx-auto d-block" alt="gif">
+      }
+    </ng-content>
+  </div>
+}
+@else if (listado.length === 0) {
+  <div #vacio>
+    <ng-content select="[vacio]"></ng-content>
+  </div>
+  @if (!vacio.innerHTML.trim())
+  {
+    <div>
+      <p>No hay elementos por mostrar</p>
+    </div>
+  }
+}@else {
+  <ng-content select="[contenido]"></ng-content>
+}
+

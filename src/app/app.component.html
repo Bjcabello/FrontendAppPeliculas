@@ -1,8 +1,11 @@
+<div class="container-fluid">
+  <div class="d-block mx-auto">
+    <h1 class="text-center">Peliculas</h1>
 
-<h1 class="text-center">Peliculas</h1>
+    <h2 class="text-start">En cines</h2>
+    <app-listado-peliculas [peliculas]="peliculaEnCine"></app-listado-peliculas>
 
-<h2>En cines</h2>
-<app-listado-peliculas [peliculas]="peliculaEnCine"></app-listado-peliculas>
-
-<h2>Proximos Estrenos</h2>
-<app-listado-peliculas [peliculas]="peliculaProximoEstrenos"></app-listado-peliculas>
+    <h2 class="text-start">Proximos Estrenos</h2>
+    <app-listado-peliculas [peliculas]="peliculaProximoEstrenos"></app-listado-peliculas>
+  </div>
+</div>

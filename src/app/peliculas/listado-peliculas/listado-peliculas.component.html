@@ -1,29 +1,29 @@
 <button class="btn btn-primary" (click)="agregarPelicula()">Agregar Pelicula</button>
 
-@if (!peliculas) {
-  <div>
-    <img src="loading.gif" class="mx-auto d-block" alt="gif">
-  </div>
-}
-@else if (peliculas.length === 0) {
-
-  <div>
-    <p>No hay elemementos para mostrar</p>
-  </div>
-}@else {
-<div class="container-fluid">
-  @for (pelicula of peliculas; track $index) {
-    <div class="d-flex align-items-center gap-3">
-      <div class="card">
-        <img [src]="pelicula.poster" class="card-img-top mt-3" alt="..." [style.width.px]="200" [style.height.px]="170">
+<app-listado-generico [listado]="peliculas">
+  <ng-container vacio>
+      <span class="text-danger">No hay peliculas disponibles</span>
+  </ng-container>
+  <ng-container contenido>
+    <div class="container mt-3">
+    @for (pelicula of peliculas; track $index) {
+      <div class="d-flex align-items-center gap-2 border border-2 border-dark rounded p-1 mb-2">
+        <div class="card border-0">
+          @if (pelicula.poster) {
+            <img [src]="pelicula.poster" class="card-img-top" alt="..." [style.width.px]="200" [style.height.px]="170">
+          } @else {
+            <img src="default.png" class="card-img-top" alt="..." [style.width.px]="200" [style.height.px]="170">
+          }
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{ $index +1 }} Película: {{ pelicula.titulo | uppercase }}</h5>
+          <p class="card-text">Fecha Lanzamiento: {{ pelicula.fechalanzamiento | date:"dd-MMMM-yyyy" }}</p>
+          <p class="card-text">Precio: {{ pelicula.precio | currency }}</p>
+          <button class="btn btn-danger" (click)="removerPelicula(pelicula)">Eliminar Pelicula</button>
+        </div>
       </div>
-      <div class="card-body">
-        <h5 class="card-title">{{ $index +1 }}) Pelicula: {{ pelicula.titulo | uppercase }}</h5>
-        <p class="card-text">Fecha de Lanzamiento: {{ pelicula.fechalanzamiento | date:"dd-MMMM-yyyy" }}</p>
-        <p class="card-text">Precio: {{ pelicula.precio | currency }}</p>
-      </div>
+    }
     </div>
-  }
-</div>
-}
+  </ng-container>
+</app-listado-generico>
 
