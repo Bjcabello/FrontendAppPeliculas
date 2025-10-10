@@ -3,10 +3,10 @@
       <span class="text-danger">No hay peliculas disponibles</span>
   </ng-container>
   <ng-container contenido>
-    <div class="container mt-1">
+    <div class="mt-1">
       <button class="btn btn-primary mb-2" (click)="agregarPelicula()">Agregar Pelicula</button>
     @for (pelicula of peliculas; track $index) {
-      <div class="d-flex align-items-center gap-1 border border-2 border-dark rounded p-1 mb-2" >
+      <div class="d-flex align-items-center gap-1 border border-2 border-dark rounded  mb-2" >
         <div class="card border-0">
           @if (pelicula.poster) {
             <img [src]="pelicula.poster" class="card-img-top" alt="..." [style.width.px]="200" [style.height.px]="170">
@@ -15,7 +15,7 @@
           }
         </div>
         <div class="card-body">
-          <h5 class="card-title">{{ $index +1 }} Película: {{ pelicula.titulo | uppercase }}</h5>
+          <h5 class="card-title">{{ $index +1 }}) Película: {{ pelicula.titulo | uppercase }}</h5>
           <p class="card-text">Fecha Lanzamiento: {{ pelicula.fechalanzamiento | date:"dd-MMMM-yyyy" }}</p>
           <p class="card-text">Precio: {{ pelicula.precio | currency }}</p>
           <button mat-raised-button color="warn" (click)="removerPelicula(pelicula)">
@@ -23,7 +23,7 @@
             Eliminar Pelicula
           </button>
           <div class="mt-2">
-            <app-rating [maximoRating]="5"></app-rating>
+            <app-rating [maximoRating]="5" (votado)="procesarVoto($event)"></app-rating>
           </div>
         </div>
       </div>

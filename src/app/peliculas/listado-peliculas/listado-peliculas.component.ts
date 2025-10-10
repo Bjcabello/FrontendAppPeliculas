@@ -15,8 +15,8 @@ import { RatingComponent } from "../../compartidos/componentes/rating/rating.com
     ListadoGenericoComponent,
     MatButtonModule,
     MatIconModule,
-    RatingComponent
-],
+    RatingComponent,
+  ],
   templateUrl: './listado-peliculas.component.html',
   styleUrl: './listado-peliculas.component.css',
 })
@@ -38,5 +38,8 @@ export class ListadoPeliculasComponent {
       (peliculaActual: any) => peliculaActual.titulo === pelicula.titulo
     );
     this.peliculas.splice(indice, 1);
+  }
+  procesarVoto(voto: number) {
+    alert(`Calificacion Otorgada: ${voto}`);
   }
 }

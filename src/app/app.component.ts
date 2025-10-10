@@ -4,8 +4,6 @@ import { RouterOutlet } from '@angular/router';
 import { ListadoPeliculasComponent } from "./peliculas/listado-peliculas/listado-peliculas.component";
 import { MenuComponent } from "./compartidos/componentes/menu/menu.component";
 
-
-
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -51,9 +49,8 @@ export class AppComponent implements  OnInit{
   }
   peliculaEnCine!: any[]
   peliculaProximoEstrenos!: any[]
+  cargando = true;
 
-  clickBotom(){
-    alert("has hecho click")
-  }
+  
 
 }
