@@ -49,8 +49,8 @@ export class AppComponent implements  OnInit{
   }
   peliculaEnCine!: any[]
   peliculaProximoEstrenos!: any[]
-  cargando = true;
-
   
+
+
 
 }

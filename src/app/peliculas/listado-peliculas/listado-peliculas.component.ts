@@ -24,15 +24,15 @@ export class ListadoPeliculasComponent {
   @Input({ required: true })
   peliculas!: any[];
 
-  agregarPelicula() {
-    this.peliculas.push({
-      titulo: 'Batman El Caballero de la Noche',
-      fechaLanzamiento: new Date('2025-10-07'),
-      precio: 15.0,
-      poster:
-        'https://m.media-amazon.com/images/M/MV5BN2U3NmZjMTYtY2JhOS00NzU4LWJkMDAtZjFmZjAyN2ZlMTMxXkEyXkFqcGc@._V1_.jpg',
-    });
-  }
+  // agregarPelicula() {
+  //   this.peliculas.push({
+  //     titulo: 'Batman El Caballero de la Noche',
+  //     fechaLanzamiento: new Date('2025-10-07'),
+  //     precio: 15.0,
+  //     poster:
+  //       'https://m.media-amazon.com/images/M/MV5BN2U3NmZjMTYtY2JhOS00NzU4LWJkMDAtZjFmZjAyN2ZlMTMxXkEyXkFqcGc@._V1_.jpg',
+  //   });
+  // }
   removerPelicula(pelicula: any) {
     const indice = this.peliculas.findIndex(
       (peliculaActual: any) => peliculaActual.titulo === pelicula.titulo
