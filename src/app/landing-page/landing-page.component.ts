@@ -52,7 +52,7 @@ export class LandingPageComponent implements OnInit {
           fechalanzamiento: new Date('2025-09-17'),
           precio: 20.0,
           poster:
-            'https://play-lh.googleusercontent.com/wvftlha3S5g_rjz8ZnOMyXKrb3tlACwlwug0dsH83cvNWJcpnAJXF_GH4psljIfs35Gb=w240-h480-rw',
+            'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR9r3W6ryKG3Bi1qrXyP_z6uzK5SYlYeKIElD0izcm6txwsHp0vPurnJ7RKrbxGTT4Dihx5YgHRvHpMVLRdyxcbZ3tXjaAPKJeSWsVabVZ-',
         },
       ];
 
