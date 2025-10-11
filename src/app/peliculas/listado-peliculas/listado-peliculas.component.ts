@@ -9,9 +9,6 @@ import { RatingComponent } from "../../compartidos/componentes/rating/rating.com
 @Component({
   selector: 'app-listado-peliculas',
   imports: [
-    DatePipe,
-    UpperCasePipe,
-    CurrencyPipe,
     ListadoGenericoComponent,
     MatButtonModule,
     MatIconModule,

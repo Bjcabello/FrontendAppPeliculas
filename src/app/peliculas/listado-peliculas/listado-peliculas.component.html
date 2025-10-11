@@ -15,18 +15,17 @@
               }
           </a>
           <p class="text-center fw-bolder">
-            <a>{{pelicula.titulo}}</a>
+          {{pelicula.titulo}}
           </p>
           <div class="px-4">
             <app-rating [maximoRating]="5" (votado)="procesarVoto($event)"></app-rating>
           </div>
-          <div class="justify-content-between">
+          <div class="d-flex justify-content-between">
             <button mat-flat-button class="secondary">Editar</button>
             <button mat-flat-button class="warn">Borrar</button>
           </div>
         </div>
       }
-
     </div>
   </ng-container>
 </app-listado-generico>

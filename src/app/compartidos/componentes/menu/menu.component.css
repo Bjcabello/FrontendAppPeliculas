@@ -3,3 +3,9 @@ mat-toolbar{
   top: 0;
   z-index: 1000;
 }
+a.mat-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}

@@ -1,13 +1,7 @@
+<div class="d-flex justify-content-center">
+  <app-menu></app-menu>
+</div>
+<hr>
 <div class="container">
-  <div class="px-4">
-    <app-menu></app-menu>
-    <hr>
-    <h1 class="text-center">Peliculas</h1>
-    <hr>
-    <h2 class="text-start">En cines</h2>
-    <app-listado-peliculas [peliculas]="peliculaEnCine"></app-listado-peliculas>
-
-    <h2 class="text-start">Proximos Estrenos</h2>
-    <app-listado-peliculas [peliculas]="peliculaProximoEstrenos"></app-listado-peliculas>
-  </div>
+  <router-outlet></router-outlet>
 </div>
