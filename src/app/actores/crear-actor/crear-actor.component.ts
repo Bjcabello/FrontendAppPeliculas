@@ -1,11 +1,18 @@
 import { Component } from '@angular/core';
+import { FormularioActorComponent } from "../formulario-actor/formulario-actor.component";
+import { ActorCreacionDTO } from '../actores';
 
 @Component({
   selector: 'app-crear-actor',
-  imports: [],
+  imports: [FormularioActorComponent],
   templateUrl: './crear-actor.component.html',
   styleUrl: './crear-actor.component.css'
 })
 export class CrearActorComponent {
 
+
+  guardarCambios(actor:ActorCreacionDTO){
+    console.log("creando el actor",actor);
+
+  }
 }
