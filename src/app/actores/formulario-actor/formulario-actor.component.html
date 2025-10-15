@@ -1,10 +1,10 @@
 <div class=" d-flex justify-content-center align-items-center">
-  <form (submit)="guardarCambios()" [formGroup]="form">
+  <form [formGroup]="form" (submit)="guardarCambios()">
     <div>
       <mat-form-field appearance="outline">
         <mat-label>Nombre</mat-label>
         <input matInput [formControl]="form.controls.nombre" placeholder="ingrese nombre"/>
-        <mat-error></mat-error>
+        <mat-error>{{obtenerErrorCampoNombre()}}</mat-error>
       </mat-form-field>
     </div>
 
@@ -14,11 +14,12 @@
         <input matInput [matDatepicker]="picker" [formControl]="form.controls.fechaNacimiento" placeholder="fecha de Nacimiento"/>
         <mat-datepicker #picker></mat-datepicker>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-error>{{ObtenerErrorCampoFechaNacimiento()}}</mat-error>
       </mat-form-field>
     </div>
-    <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between mt-3">
       <button mat-flat-button type="submit" class="primary" [disabled]="form.invalid">Guardar</button>
-      <a mat-stroked-button routerLink="/actor" class="secondary">Cancelar</a>
+      <a mat-stroked-button routerLink="/actores/" class="secondary">Cancelar</a>
     </div>
   </form>
 </div>
