@@ -8,6 +8,7 @@ import { RouterLink } from '@angular/router';
 import { ActorCreacionDTO, ActorDTO } from '../actores';
 import moment from 'moment';
 import { fechaNoPuedeSerFutura } from '../../compartidos/funciones/validaciones';
+import { InputImgComponent } from "../../compartidos/componentes/input-img/input-img.component";
 
 @Component({
   selector: 'app-formulario-actor',
@@ -18,7 +19,8 @@ import { fechaNoPuedeSerFutura } from '../../compartidos/funciones/validaciones'
     ReactiveFormsModule,
     MatInputModule,
     MatDatepickerModule,
-  ],
+    InputImgComponent
+],
   templateUrl: './formulario-actor.component.html',
   styleUrl: './formulario-actor.component.css',
 })
