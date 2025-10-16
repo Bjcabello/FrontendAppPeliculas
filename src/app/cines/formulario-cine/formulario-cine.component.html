@@ -1,0 +1,13 @@
+<div class="d-flex justify-content-center align-items-center">
+  <form (submit)="guaradarCambios()">
+  <mat-form-field appearance="outline">
+    <mat-label>Nombre</mat-label>
+    <input matInput [formControl]="form.controls.nombre" placeholder="ingrese nombre" width="400px"/>
+    <mat-error>{{obtenerErrorCampoNombre()}}</mat-error>
+  </mat-form-field>
+  <div class="d-flex justify-content-between">
+    <button type="submit" mat-flat-button [disabled]="form.invalid">Guardar</button>
+    <a mat-stroked-button routerLink="/cine">Cancelar</a>
+  </div>
+</form>
+</div>

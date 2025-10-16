@@ -43,6 +43,7 @@ export class FormularioActorComponent implements OnInit {
     fechaNacimiento: new FormControl<Date | null>(null, {
       validators: [Validators.required, fechaNoPuedeSerFutura],
     }),
+    foto: new FormControl<File | string | null>(null)
   });
 
   obtenerErrorCampoNombre() {
@@ -64,6 +65,11 @@ export class FormularioActorComponent implements OnInit {
     return "";
   }
 
+  archivoSeleccionado(archivo: File) {
+    console.log('Archivo seleccionado en formulario-actor:', archivo);
+    this.form.controls.foto.setValue(archivo);
+  }
+
   guardarCambios() {
     if (this.form.invalid) {
       return;
@@ -74,6 +80,10 @@ export class FormularioActorComponent implements OnInit {
 
     if (actor.fechaNacimiento) {
       actor.fechaNacimiento = moment(actor.fechaNacimiento).toDate();
+    }
+
+    if(typeof actor.foto === 'string'){
+      actor.foto = undefined;
     }
 
     this.posteoFormulario.emit(actor);

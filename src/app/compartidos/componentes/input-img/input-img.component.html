@@ -8,8 +8,10 @@
   <input type="file" hidden #cargadorArchivo (change)="cambio($event)"accept="image/*">
 </div>
 
+<div class="mt-3">
 @if (imagenBase) {
-  <div class="mt-3">
     <img [src]="imagenBase" width="169" height="150" alt="Vista previa de la imagen">
-  </div>
-}
+  }@else if (urlImgenActual) {
+    <img [src]="urlImgenActual" width="169" height="150" alt="Vista previa de la imagen">
+  }
+</div>

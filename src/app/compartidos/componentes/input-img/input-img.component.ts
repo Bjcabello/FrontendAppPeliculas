@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, input, Input, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { toBase } from '../../funciones/toBase';
 
@@ -12,6 +12,10 @@ import { toBase } from '../../funciones/toBase';
 export class InputImgComponent {
   @Input({ required: true })
   titulo!: string;
+  
+  @Input()
+  urlImgenActual?: string;
+
   @Output()
   archivoSeleccionado = new EventEmitter<File>();
 
@@ -28,6 +32,7 @@ export class InputImgComponent {
         })
         .catch((error) => console.error(error));
         this.archivoSeleccionado.emit(file);
+        this.urlImgenActual = undefined;
     }
   }
 }
