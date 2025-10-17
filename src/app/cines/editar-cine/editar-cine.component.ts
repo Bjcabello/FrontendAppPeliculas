@@ -6,18 +6,20 @@ import { FormularioCineComponent } from "../formulario-cine/formulario-cine.comp
   selector: 'app-editar-cine',
   imports: [FormularioCineComponent],
   templateUrl: './editar-cine.component.html',
-  styleUrl: './editar-cine.component.css'
+  styleUrl: './editar-cine.component.css',
 })
 export class EditarCineComponent {
-  @Input({transform: numberAttribute})
+  @Input({ transform: numberAttribute })
   id!: number;
 
   cine: CineDTO = {
-    id: 1, nombre: "En brazos de un Asesino"}
+    id: 1,
+    nombre: 'San Martin',
+    latitud: -2.199649790584242,
+    longitud: -79.91755930124927,
+  };
 
-  guardarCambios(cine: CineCreacionDTO){
-    console.log("Editar cine", cine);
+  guardarCambios(cine: CineCreacionDTO) {
+    console.log('Editar cine', cine);
   }
-
-
 }

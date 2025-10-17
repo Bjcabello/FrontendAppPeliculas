@@ -1,33 +1,42 @@
 import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { RouterLink } from '@angular/router';
-import { CineCreacionDTO } from '../cines';
+import { CineCreacionDTO, CineDTO } from '../cines';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MapaComponent } from "../../compartidos/componentes/mapa/mapa.component";
+import { Coordenada } from '../../compartidos/componentes/mapa/coordenada';
 
 @Component({
   selector: 'app-formulario-cine',
-  imports: [MatFormFieldModule, ReactiveFormsModule, MatInputModule,MatButtonModule, RouterLink],
+  imports: [MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatButtonModule, RouterLink, MapaComponent],
   templateUrl: './formulario-cine.component.html',
   styleUrl: './formulario-cine.component.css'
 })
 export class FormularioCineComponent implements OnInit{
   ngOnInit(): void {
     if (this.modelo !== undefined) {
-      this.form.patchValue(this.modelo);
+      this.form.patchValue(this.modelo)
+      this.coordenadaIncial.push({latitud:this.modelo.latitud, longitud:this.modelo.longitud});
     }
   }
+ 
+
  @Input()
  modelo?: CineCreacionDTO;
 
   @Output()
   posteoFormulario = new EventEmitter<CineCreacionDTO>();
 
+  coordenadaIncial: Coordenada[] = [];
+
   private formBuilder =  inject(FormBuilder);
 
   form = this.formBuilder.group({
-    nombre: ['', { validators: [Validators.required]}]
+    nombre: ['', { validators: [Validators.required]}],
+    latitud: new FormControl<number | null>(null,  [Validators.required]),
+    longitud: new FormControl<number | null>(null,  [Validators.required])
   })
 
   obtenerErrorCampoNombre() {
@@ -38,7 +47,11 @@ export class FormularioCineComponent implements OnInit{
     return '';
   }
 
-  guaradarCambios() {
+  coordenadaSeleccionada(coordenada: Coordenada){
+    this.form.patchValue(coordenada);
+  }
+
+  guardarCambios() {
     if (!this.form.valid) {
       return;
     }

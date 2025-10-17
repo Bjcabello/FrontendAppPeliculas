@@ -8,6 +8,7 @@ import { primeraLetraMayuscula } from "../../compartidos/funciones/validaciones"
 import { GeneroCreacionDTO, GeneroDTO } from "../generos";
 
 
+
 @Component({
   selector: 'app-formulario-genero',
   imports: [
@@ -16,7 +17,7 @@ import { GeneroCreacionDTO, GeneroDTO } from "../generos";
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-  ],
+],
   templateUrl: './formulario-genero.component.html',
   styleUrl: './formulario-genero.component.css',
 })

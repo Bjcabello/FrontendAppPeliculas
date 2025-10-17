@@ -1,1 +1,6 @@
-<p>mapa works!</p>
+<div leaflet [leafletOptions]="options"
+  [leafletLayers]="capas"
+  (leafletClick)="manejarClick($event)"
+  [style.width.px]="500" [style.height.px]="300">
+
+</div>
