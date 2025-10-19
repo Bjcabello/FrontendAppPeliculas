@@ -72,7 +72,7 @@ export class FiltroPeliculaComponent implements OnInit {
     if (valores.enCines) {
       queryStrings.push(`proximosEstrenos=${valores.enCines}`);
     }
-    this.location.replaceState('peliculas/filtrar', queryStrings.join('&'));
+    this.location.replaceState('/peliculas/filtrar', queryStrings.join('&'));
   }
 
   leerValoresUrl(){

@@ -1,0 +1,16 @@
+<div class="d-flex ">
+    <ul>
+    @for (elemento  of NoSeleccionado; track $index) {
+      <li (click)="seleccionar(elemento, $index)">{{elemento.valor}}</li>
+    }
+  </ul>
+  <div class="d-flex flex-column justify-content-center mx-1">
+    <button class="btn btn-primary p-1" type="button" (click)="seleccionaTodo()">>></button>
+    <button class="btn btn-primary p-1" type="button" (click)="deseleccionaTodo()"><<</button>
+  </div>
+    <ul>
+      @for (elemento  of Seleccionados; track $index) {
+        <li (click)="deseleccionar(elemento, $index)">{{elemento.valor}}</li>
+      }
+    </ul>
+</div>

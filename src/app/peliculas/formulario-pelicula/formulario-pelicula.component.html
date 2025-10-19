@@ -17,10 +17,14 @@
         <mat-label>Trailer</mat-label>
         <input matInput title="Trailer"  [formControl]="form.controls.trailer">
       </mat-form-field>
-      <div class="ms-5">
+      <div class="mx-auto d-block">
         <app-input-img titulo="Poster de la Película"[urlImgenActual]="modelo?.poster"
        (archivoSeleccionado)="archivoSeleccionado($event)">
       </app-input-img>
+      </div>
+      <h4 class="text-center">Seleccione los Generos</h4>
+      <div>
+        <app-selector-multiple [Seleccionados]="generoSeleccionado" [NoSeleccionado]="generoNoSeleccionado"></app-selector-multiple>
       </div>
       <div class="d-flex justify-content-between mt-4">
       <button type="submit" mat-flat-button class="primary" [disabled]="form.invalid">Guardar</button>

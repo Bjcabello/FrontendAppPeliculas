@@ -1,0 +1,18 @@
+ul{
+  height: 200px;
+  list-style-type: none;
+  padding: 0;
+  width: 170px;
+  border: 2px solid #000;
+  border-radius: 4px;
+}
+ul li{
+  padding: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+button{
+  margin: 3px;
+}
