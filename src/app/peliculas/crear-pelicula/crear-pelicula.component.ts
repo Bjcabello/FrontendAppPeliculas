@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { PeliculaCreacionDTO } from '../peliculas';
 import { FormularioPeliculaComponent } from '../formulario-pelicula/formulario-pelicula.component';
 import { SelectorMultipleModelo } from '../../compartidos/componentes/selector-multiple/selector-multiple-modelo';
+import { actorAutoComplete } from '../../actores/actores';
 
 @Component({
   selector: 'app-crear-pelicula',
@@ -24,6 +25,7 @@ export class CrearPeliculaComponent {
     {llave:3 , valor: 'MultiCines'}
   ];
 
+  actoresSeleccionados:actorAutoComplete[] = [];
 
   guardarCambios(pelicula: PeliculaCreacionDTO){
     console.log("Creando Pelicula", pelicula);

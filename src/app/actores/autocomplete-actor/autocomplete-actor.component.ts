@@ -1,10 +1,11 @@
-import { Component, ViewChild, viewChild } from '@angular/core';
+import { Component, Input, ViewChild, viewChild } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule, MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatTable, MatTableModule } from '@angular/material/table';
+import {CdkDragDrop, DragDropModule, moveItemInArray} from '@angular/cdk/drag-drop';
 import { actorAutoComplete } from '../actores';
 
 @Component({
@@ -17,6 +18,7 @@ import { actorAutoComplete } from '../actores';
     MatIconModule,
     MatTableModule,
     FormsModule,
+    DragDropModule
   ],
   templateUrl: './autocomplete-actor.component.html',
   styleUrl: './autocomplete-actor.component.css',
@@ -45,6 +47,9 @@ export class AutocompleteActorComponent {
     },
   ];
 
+  @Input({required: true})
+  
+
   actoresSelecionado: actorAutoComplete[] = [ ];
   columnasAMostrar = ['imagen', 'nombre', 'personaje', 'acciones'];
 
@@ -56,6 +61,14 @@ export class AutocompleteActorComponent {
     if(this.tabla !== undefined){
       this.tabla.renderRows();
     }
+  }
+
+  finalizarArrastre(event: CdkDragDrop<actorAutoComplete[]>){
+    const indicePrevio = this.actoresSelecionado.findIndex(
+      actor => actor === event.item.data);
+    moveItemInArray(this.actoresSelecionado, indicePrevio, event.currentIndex);
+    this.tabla.renderRows();
+    
   }
 
   eliminar(actor: actorAutoComplete){
