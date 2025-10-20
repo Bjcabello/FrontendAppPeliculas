@@ -1,16 +1,18 @@
-<div class="d-flex ">
-    <ul>
-    @for (elemento  of NoSeleccionado; track $index) {
-      <li (click)="seleccionar(elemento, $index)">{{elemento.valor}}</li>
-    }
+<div class="d-flex">
+  <ul>
+    <li *ngFor="let elemento of NoSeleccionado; let i = index" (click)="seleccionar(elemento, i)">
+      {{elemento.valor}}
+    </li>
   </ul>
+
   <div class="d-flex flex-column justify-content-center mx-1">
-    <button class="btn btn-primary p-1" type="button" (click)="seleccionaTodo()">>></button>
-    <button class="btn btn-primary p-1" type="button" (click)="deseleccionaTodo()"><<</button>
+    <button class="btn btn-primary p-1" type="button" (click)="seleccionaTodo()">&gt;&gt;</button>
+    <button class="btn btn-primary p-1" type="button" (click)="deseleccionaTodo()">&lt;&lt;</button>
   </div>
-    <ul>
-      @for (elemento  of Seleccionados; track $index) {
-        <li (click)="deseleccionar(elemento, $index)">{{elemento.valor}}</li>
-      }
-    </ul>
+
+  <ul>
+    <li *ngFor="let elemento of Seleccionados; let i = index" (click)="deseleccionar(elemento, i)">
+      {{elemento.valor}}
+    </li>
+  </ul>
 </div>

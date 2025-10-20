@@ -1,8 +1,9 @@
 import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { SelectorMultipleModelo } from './selector-multiple-modelo';
 @Component({
   selector: 'app-selector-multiple',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './selector-multiple.component.html',
   styleUrl: './selector-multiple.component.css',
 })

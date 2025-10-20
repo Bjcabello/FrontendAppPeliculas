@@ -35,7 +35,7 @@ export class EditarPeliculaComponent {
   ];
   cineNoSeleccionados: SelectorMultipleModelo[] = [
     { llave: 1, valor: 'CineMark' },
-    { llave: 2, valor: 'SUperCines' }
+    { llave: 2, valor: 'SuperCines' }
   ];
 
   guardarCambios(pelicula: PeliculaCreacionDTO) {
