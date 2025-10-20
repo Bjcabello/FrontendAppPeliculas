@@ -23,12 +23,21 @@ export class EditarPeliculaComponent {
   };
 
   generoSeleccionados: SelectorMultipleModelo[] = [
-    { llave: 2, valor: 'Accion' }
+    { llave: 2, valor: 'Accion' },
   ];
   generoNoSeleccionados: SelectorMultipleModelo[] = [
     { llave: 1, valor: 'Drama' },
     { llave: 3, valor: 'Comedia' },
   ];
+
+  cineSeleccionados: SelectorMultipleModelo[] = [
+    { llave: 3, valor: 'MultiCines' }
+  ];
+  cineNoSeleccionados: SelectorMultipleModelo[] = [
+    { llave: 1, valor: 'CineMark' },
+    { llave: 2, valor: 'SUperCines' }
+  ];
+
   guardarCambios(pelicula: PeliculaCreacionDTO) {
     console.log('editando Pelicula', pelicula);
   }

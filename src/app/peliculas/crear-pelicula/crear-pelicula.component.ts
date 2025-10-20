@@ -16,6 +16,13 @@ export class CrearPeliculaComponent {
     {llave:2 , valor: 'Accion'},
     {llave:3 , valor: 'Comedia'}
   ];
+  
+  cineSeleccionados: SelectorMultipleModelo[] = [];
+  cineNoSeleccionados: SelectorMultipleModelo[] = [
+    {llave:1 , valor: 'CineMark'},
+    {llave:2 , valor: 'SUperCines'},
+    {llave:3 , valor: 'MultiCines'}
+  ];
 
 
   guardarCambios(pelicula: PeliculaCreacionDTO){

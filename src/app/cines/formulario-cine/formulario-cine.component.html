@@ -7,7 +7,7 @@
   </mat-form-field>
   <h4>Seleccione la ubicacion</h4>
     <app-mapa (coordenadaSeleccionada)="coordenadaSeleccionada($event)" [coordenadaInicial]="coordenadaIncial"></app-mapa>
-  <div class="d-flex justify-content-between">
+  <div class="d-flex justify-content-around mt-2">
     <button type="submit" mat-flat-button [disabled]="form.invalid">Guardar</button>
     <a mat-stroked-button routerLink="/cine">Cancelar</a>
   </div>
