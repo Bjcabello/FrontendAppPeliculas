@@ -21,7 +21,9 @@
           <a routerLink="/generos/editar/{{elemento.id}}" class="primary" mat-flat-button>
             Editar
           </a>
-          <button mat-flat-button class="warn">Borrar</button>
+          <button mat-flat-button class="warn"
+           [swal]="{title: 'confirmacion', text: 'Deseas borrar este registro?',
+            showCancelButton: true}" (confirm)="borrar(elemento.id)">Borrar</button>
         </td>
       </ng-container>
 
@@ -29,6 +31,6 @@
       <tr mat-row *matRowDef="let row; columns: columnasAMostrar;"></tr>
     </table>
     <mat-paginator showFirstLastButtons [length]="cantidadTotalRegistros"
-     [pageSize]="paginacion.recordsPorPagina" [pageSizeOptions]="[5,10,50]" (page)="actualizarPaginacion($event)"></mat-paginator>
+     [pageSize]="paginacion.recordsPorPagina" [pageSizeOptions]="[5,10,50]" (page)="actualizarPaginacion($event)" [pageIndex]="paginacion.pagina-1"></mat-paginator>
   </ng-container>
 </app-listado-generico>

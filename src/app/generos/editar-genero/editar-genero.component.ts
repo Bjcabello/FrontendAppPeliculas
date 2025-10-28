@@ -29,7 +29,7 @@ export class EditarGeneroComponent implements OnInit {
   guardarCambios(genero: GeneroCreacionDTO){
     this.generosService.actualizar(this.id, genero).subscribe({
       next: () => {
-        this.router.navigate(['/generos']);
+        this.router.navigate(['generos']);
       },
       error: (err) => {
         const errores = extraerErrores(err);

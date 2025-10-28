@@ -63,4 +63,6 @@ For more information on using the Angular CLI, including detailed command refere
 npm install leaflet
 npm install @bluehalo/ngx-leaflet@19.0.0
 npm install --save-dev @types/leaflet
+npm i sweetalert2@11.12.4 o  npm install sweetalert2 @sweetalert2/ngx-sweetalert2@12.4.0 --force
+
  
