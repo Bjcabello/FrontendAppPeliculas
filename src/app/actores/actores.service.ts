@@ -21,6 +21,15 @@ export class ActoresService {
     return this.http.get<ActorDTO[]>(this.urlBase, {params: queryParams, observe: 'response'});
   }
 
+  public obtenerPorId(id: number):Observable<ActorDTO>{
+    return this.http.get<ActorDTO>(`${this.urlBase}/${id}`);
+  }
+
+  public actualizar(id: number, actor: ActorCreacionDTO){
+    const formData = this.construirFormData(actor);
+    return this.http.put(`${this.urlBase}/${id}`, formData);
+  }
+
   public crear(actor: ActorCreacionDTO){
     const formData = this.construirFormData(actor);
     return this.http.post(this.urlBase, formData);
