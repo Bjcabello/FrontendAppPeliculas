@@ -19,8 +19,8 @@ import { MostrarErroresComponent } from "../../compartidos/componentes/mostrar-e
     MatFormFieldModule,
     MatInputModule,
     FormularioGeneroComponent,
-    MostrarErroresComponent
-],
+    MostrarErroresComponent,
+  ],
   templateUrl: './crear-generos.component.html',
   styleUrl: './crear-generos.component.css',
 })
@@ -30,16 +30,14 @@ export class CrearGenerosComponent {
   errores: string[] = [];
 
   guardarCambios(genero: GeneroCreacionDTO) {
-
     this.generosService.crear(genero).subscribe({
       next: () => {
         this.router.navigate(['generos']);
       },
-      error: err => {
+      error: (err) => {
         const errores = extraerErrores(err);
         this.errores = errores;
-      }
+      },
     });
-
   }
 }
