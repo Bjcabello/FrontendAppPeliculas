@@ -55,5 +55,10 @@ export class IndiceActoresComponent {
     this.cargarRegistro();
   }
 
-  borrar(id: number) {}
+  borrar(id: number) {
+    this.actoresService.borrar(id).subscribe(() => {
+      this.paginacion.pagina = 1;
+      this.cargarRegistro();
+    })
+  }
 }
