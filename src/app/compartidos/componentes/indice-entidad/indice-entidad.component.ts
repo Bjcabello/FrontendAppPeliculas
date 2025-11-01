@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { IServiciosCRUD } from '../../interfaces/IServiciosCRUD';
 
 @Component({
   selector: 'app-indice-entidad',
@@ -22,7 +23,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
   templateUrl: './indice-entidad.component.html',
   styleUrl: './indice-entidad.component.css',
 })
-export class IndiceEntidadComponent<TDTO> {
+export class IndiceEntidadComponent<TDTO, TCreacionDTO> {
   @Input({ required: true })
   titulo!: string;
 
@@ -35,9 +36,12 @@ export class IndiceEntidadComponent<TDTO> {
   @Input()
   columnasAMostrar = ['id', 'nombre', 'acciones'];
 
-  servicioCrud = inject(SERVICIO_CRUD_TOKEN) as any;
+  servicioCrud = inject(SERVICIO_CRUD_TOKEN) as IServiciosCRUD<
+    TDTO,
+    TCreacionDTO
+  >;
 
-  paginacion: PaginacionDTO = { pagina: 1, recordsPorPagina: 5};
+  paginacion: PaginacionDTO = { pagina: 1, recordsPorPagina: 5 };
   entidades!: TDTO[];
   cantidadTotalRegistros!: number;
 
@@ -65,14 +69,23 @@ export class IndiceEntidadComponent<TDTO> {
   }
 
   borrar(id: number) {
-    this.servicioCrud.borrar(id).subscribe(() => {
-      this.paginacion.pagina = 1;
-      this.cargarRegistros();
+
+    this.servicioCrud.borrar(id).subscribe({
+      next: () => {
+        
+        this.entidades = this.entidades.filter(
+          (entidad: any) => entidad.id !== id
+        );
+        this.cantidadTotalRegistros--;
+      },
+      error: (error) => {
+        console.error('Error al borrar:', error);
+      },
     });
   }
 
-  primeraLetraEnMayuscula(valor: string){
+  primeraLetraEnMayuscula(valor: string) {
     if (!valor) return valor;
-    return valor.charAt(0).toUpperCase()+ valor.slice(1);
+    return valor.charAt(0).toUpperCase() + valor.slice(1);
   }
 }
