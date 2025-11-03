@@ -2,16 +2,17 @@ import { Component } from '@angular/core';
 import { CineCreacionDTO } from '../cines';
 import { combineLatestWith } from 'rxjs';
 import { FormularioCineComponent } from "../formulario-cine/formulario-cine.component";
+import { SERVICIO_CRUD_TOKEN } from '../../compartidos/proveedores/proveedores';
+import { CinesService } from '../cines.service';
+import { CrearEntidadComponent } from "../../compartidos/componentes/crear-entidad/crear-entidad.component";
 
 @Component({
   selector: 'app-crear-cine',
-  imports: [FormularioCineComponent],
+  imports: [CrearEntidadComponent],
   templateUrl: './crear-cine.component.html',
-  styleUrl: './crear-cine.component.css'
+  styleUrl: './crear-cine.component.css',
+  providers:[{provide: SERVICIO_CRUD_TOKEN, useClass: CinesService}]
 })
 export class CrearCineComponent {
- guardarCambios(cine: CineCreacionDTO){
-  console.log("Creando Cine", cine);
-
- }
+  formularioCines = FormularioCineComponent;
 }

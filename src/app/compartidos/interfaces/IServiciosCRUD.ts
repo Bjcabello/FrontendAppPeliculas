@@ -3,8 +3,6 @@ import { PaginacionDTO } from "../modelos/PaginacionDTO";
 import { HttpResponse } from "@angular/common/http";
 import { GeneroCreacionDTO } from "../../generos/generos";
 
-
-
 export interface IServiciosCRUD<TDTO, TCreacionDTO> {
   obtenerPaginado(paginacion: PaginacionDTO): Observable<HttpResponse<TDTO[]>>;
   obtenerPorId(id: number): Observable<TDTO>;
