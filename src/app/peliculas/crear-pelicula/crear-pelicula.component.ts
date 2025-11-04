@@ -1,34 +1,54 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { PeliculaCreacionDTO } from '../peliculas';
 import { FormularioPeliculaComponent } from '../formulario-pelicula/formulario-pelicula.component';
 import { SelectorMultipleModelo } from '../../compartidos/componentes/selector-multiple/selector-multiple-modelo';
 import { actorAutoComplete } from '../../actores/actores';
+import { PeliculasService } from '../peliculas.service';
+import { Router } from '@angular/router';
+import { extraerErrores } from '../../compartidos/funciones/extraerErrores';
+import { MostrarErroresComponent } from "../../compartidos/componentes/mostrar-errores/mostrar-errores.component";
+import { CargandoComponent } from "../../compartidos/componentes/cargando/cargando.component";
 
 @Component({
   selector: 'app-crear-pelicula',
-  imports: [FormularioPeliculaComponent],
+  imports: [FormularioPeliculaComponent, MostrarErroresComponent, CargandoComponent],
   templateUrl: './crear-pelicula.component.html',
   styleUrl: './crear-pelicula.component.css'
 })
 export class CrearPeliculaComponent {
   generoSeleccionados: SelectorMultipleModelo[] = [];
-  generoNoSeleccionados: SelectorMultipleModelo[] = [
-    {llave:1 , valor: 'Drama'},
-    {llave:2 , valor: 'Accion'},
-    {llave:3 , valor: 'Comedia'}
-  ];
+  generoNoSeleccionados: SelectorMultipleModelo[] = [];
 
   cineSeleccionados: SelectorMultipleModelo[] = [];
-  cineNoSeleccionados: SelectorMultipleModelo[] = [
-    {llave:1 , valor: 'CineMark'},
-    {llave:2 , valor: 'SuperCines'},
-    {llave:3 , valor: 'MultiCines'}
-  ];
+  cineNoSeleccionados: SelectorMultipleModelo[] = [];
 
   actoresSeleccionados:actorAutoComplete[] = [];
 
+  peliculasService = inject(PeliculasService);
+  private router = inject(Router);
+  errores: string[] = [];
+
+  constructor(){
+     this.peliculasService.crearGet().subscribe(modelo => {
+      this.generoNoSeleccionados = modelo.generos.map(genero => {
+        return<SelectorMultipleModelo>{llave: genero.id, valor: genero.nombre}
+      })
+      this.cineNoSeleccionados = modelo.generos.map(cine=> {
+        return <SelectorMultipleModelo>{llave: cine.id, valor: cine.nombre}
+      })
+     })
+  }
   guardarCambios(pelicula: PeliculaCreacionDTO){
-    console.log("Creando Pelicula", pelicula);
+    this.peliculasService.crear(pelicula).subscribe({
+      next: pelicula =>{
+        console.log(pelicula);
+        this.router.navigate(['/'])
+      },
+      error: err => {
+        const errores = extraerErrores(err)
+        this.errores = errores;
+      }
+    })
 
   }
 }

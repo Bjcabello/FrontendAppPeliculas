@@ -1,4 +1,7 @@
-import { actorAutoComplete } from "../actores/actores";  
+import { actorAutoComplete } from "../actores/actores";
+import { CineDTO } from "../cines/cines";
+import { GeneroDTO } from "../generos/generos";
+
 export interface PeliculaDTO{
   id : number;
   titulo : string;
@@ -15,4 +18,9 @@ export interface PeliculaCreacionDTO {
   generosId?: number[];
   cinesId?: number[];
   actores?: actorAutoComplete[];
+}
+
+export interface PeliculasPostGetDTO{
+  generos: GeneroDTO[];
+  cines: CineDTO[];
 }

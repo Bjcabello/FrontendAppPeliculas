@@ -22,13 +22,20 @@
        (archivoSeleccionado)="archivoSeleccionado($event)">
       </app-input-img>
       </div>
-      <h4 class="text-center">Seleccione los Generos</h4>
-      <div>
-        <app-selector-multiple [Seleccionados]="generoSeleccionado" [NoSeleccionado]="generoNoSeleccionado"></app-selector-multiple>
+      <h4 class="text-center">Seleccione los Géneros</h4>
+      <div class="border rounded p-2 overflow-auto" [style.height]="esScroll ? '200px' : 'auto'">
+        <app-selector-multiple
+          [Seleccionados]="generoSeleccionado"
+          [NoSeleccionado]="generoNoSeleccionado">
+        </app-selector-multiple>
       </div>
-      <h4 class="text-center">Seleccione los Cines</h4>
-      <div>
-        <app-selector-multiple [Seleccionados]="cineSeleccionado" [NoSeleccionado]="cineNoSeleccionado"></app-selector-multiple>
+
+      <h4 class="text-center mt-3">Seleccione los Cines</h4>
+      <div class="border rounded p-2 overflow-auto" [style.height]="esScroll ? '200px' : 'auto'" >
+        <app-selector-multiple
+          [Seleccionados]="cineSeleccionado"
+          [NoSeleccionado]="cineNoSeleccionado">
+        </app-selector-multiple>
       </div>
       <h4 class="text-center">Seleccione los Actores</h4>
       <div class="d-flex justify-content-center">
