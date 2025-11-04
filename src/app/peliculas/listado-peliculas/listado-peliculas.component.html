@@ -6,10 +6,10 @@
 
     <div class="d-flex flex-wrap">
       @for (pelicula of peliculas; track $index) {
-        <div class="ms-3">
+        <div class="border-5">
           <a>
             @if (pelicula.poster) {
-            <img [src]="pelicula.poster" class="card-img-top" alt="..." [style.width.px]="180" [style.height.px]="150">
+            <img [src]="pelicula.poster" class="ms-3 card-img-top" alt="..." [style.width.px]="180" [style.height.px]="150">
               } @else {
                 <img src="default.png" class="card-img-top" alt="..." [style.width.px]="180" [style.height.px]="150">
               }
@@ -17,7 +17,7 @@
           <p class="text-center fw-bolder">
           {{pelicula.titulo}}
           </p>
-          <div class="px-4">
+          <div class="d-flex justify-content-center">
             <app-rating [maximoRating]="5" (votado)="procesarVoto($event)"></app-rating>
           </div>
           <div class="d-flex justify-content-between">

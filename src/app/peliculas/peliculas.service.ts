@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
-import { PeliculaCreacionDTO, PeliculaDTO, PeliculasPostGetDTO } from './peliculas';
+import { LandingPageDto, PeliculaCreacionDTO, PeliculaDTO, PeliculasPostGetDTO } from './peliculas';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +12,10 @@ export class PeliculasService {
   constructor() { }
   private http = inject(HttpClient);
   private urlBase = environment.apiUrl + '/peliculas';
+
+  public obtenerLandinPage(): Observable<LandingPageDto>{
+    return this.http.get<LandingPageDto>(`${this.urlBase}/landing`)
+  }
 
   public crearGet(): Observable<PeliculasPostGetDTO>{
     return this.http.get<PeliculasPostGetDTO>(`${this.urlBase}/postget`);
