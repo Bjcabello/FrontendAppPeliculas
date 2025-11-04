@@ -17,8 +17,8 @@
         <mat-label>Trailer</mat-label>
         <input matInput title="Trailer"  [formControl]="form.controls.trailer">
       </mat-form-field>
-      <div class="mx-auto d-block">
-        <app-input-img titulo="Poster de la Película"[urlImgenActual]="modelo?.poster"
+      <div class="d-flex justify-content-center align-items-center text-center">
+        <app-input-img  titulo="Poster de la Película"[urlImgenActual]="modelo?.poster"
        (archivoSeleccionado)="archivoSeleccionado($event)">
       </app-input-img>
       </div>

@@ -11,8 +11,9 @@ import { PeliculaCreacionDTO, PeliculaDTO } from '../peliculas';
 import moment from 'moment';
 import { SelectorMultipleModelo } from '../../compartidos/componentes/selector-multiple/selector-multiple-modelo';
 import { SelectorMultipleComponent } from "../../compartidos/componentes/selector-multiple/selector-multiple.component";
-import { AutocompleteActorComponent } from "../../actores/autocomplete-actor/autocomplete-actor.component";
-import { actorAutoComplete } from '../../actores/actores';
+
+import { actorAutoCompleteDTO } from '../../actores/actores';
+import { AutocompleteActorComponen } from "../../actores/autocomplete-actor/autocomplete-actor.component";
 
 
 @Component({
@@ -26,8 +27,8 @@ import { actorAutoComplete } from '../../actores/actores';
     MatDatepickerModule,
     InputImgComponent,
     SelectorMultipleComponent,
-    AutocompleteActorComponent,
-  ],
+    AutocompleteActorComponen
+],
   templateUrl: './formulario-pelicula.component.html',
   styleUrl: './formulario-pelicula.component.css',
 })
@@ -51,7 +52,7 @@ export class FormularioPeliculaComponent implements OnInit {
   cineSeleccionado!: SelectorMultipleModelo[];
 
   @Input({ required: true })
-  actoresSeleccionados: actorAutoComplete[] = [];
+  actoresSeleccionados: actorAutoCompleteDTO[] = [];
 
   esScroll = true;
 

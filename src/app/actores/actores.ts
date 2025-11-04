@@ -18,7 +18,7 @@ export interface ActorPeliculaDTO{
   foto?: string;
 }
 
-export interface actorAutoComplete{
+export interface actorAutoCompleteDTO{
   id: number;
   nombre: string;
   personaje?: string;

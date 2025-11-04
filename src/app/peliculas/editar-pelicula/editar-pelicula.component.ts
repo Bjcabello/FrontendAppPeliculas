@@ -2,7 +2,7 @@ import { Component, Input, numberAttribute } from '@angular/core';
 import { PeliculaCreacionDTO, PeliculaDTO } from '../peliculas';
 import { FormularioPeliculaComponent } from "../formulario-pelicula/formulario-pelicula.component";
 import { SelectorMultipleModelo } from '../../compartidos/componentes/selector-multiple/selector-multiple-modelo';
-import { actorAutoComplete } from '../../actores/actores';
+import { actorAutoCompleteDTO } from '../../actores/actores';
 
 @Component({
   selector: 'app-editar-pelicula',
@@ -39,7 +39,7 @@ export class EditarPeliculaComponent {
     { llave: 2, valor: 'SuperCines' },
   ];
 
-  actoresSeleccionados: actorAutoComplete[] = [
+  actoresSeleccionados: actorAutoCompleteDTO[] = [
     {
       id: 2,
       nombre: 'Robert Downey Jr',

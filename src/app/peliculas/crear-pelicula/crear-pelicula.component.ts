@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { PeliculaCreacionDTO } from '../peliculas';
 import { FormularioPeliculaComponent } from '../formulario-pelicula/formulario-pelicula.component';
 import { SelectorMultipleModelo } from '../../compartidos/componentes/selector-multiple/selector-multiple-modelo';
-import { actorAutoComplete } from '../../actores/actores';
+import { actorAutoCompleteDTO } from '../../actores/actores';
 import { PeliculasService } from '../peliculas.service';
 import { Router } from '@angular/router';
 import { extraerErrores } from '../../compartidos/funciones/extraerErrores';
@@ -18,12 +18,9 @@ import { CargandoComponent } from "../../compartidos/componentes/cargando/cargan
 export class CrearPeliculaComponent {
   generoSeleccionados: SelectorMultipleModelo[] = [];
   generoNoSeleccionados: SelectorMultipleModelo[] = [];
-
   cineSeleccionados: SelectorMultipleModelo[] = [];
   cineNoSeleccionados: SelectorMultipleModelo[] = [];
-
-  actoresSeleccionados:actorAutoComplete[] = [];
-
+  actoresSeleccionados:actorAutoCompleteDTO[] = [];
   peliculasService = inject(PeliculasService);
   private router = inject(Router);
   errores: string[] = [];
@@ -33,7 +30,7 @@ export class CrearPeliculaComponent {
       this.generoNoSeleccionados = modelo.generos.map(genero => {
         return<SelectorMultipleModelo>{llave: genero.id, valor: genero.nombre}
       })
-      this.cineNoSeleccionados = modelo.generos.map(cine=> {
+      this.cineNoSeleccionados = modelo.cines.map(cine=> {
         return <SelectorMultipleModelo>{llave: cine.id, valor: cine.nombre}
       })
      })
