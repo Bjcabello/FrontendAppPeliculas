@@ -1,8 +1,8 @@
 <h2 class="text-start mt-3">En Cines</h2>
 <div class="d-flex justify-content-center align-items-center flex-wrap">
-<app-listado-peliculas [peliculas]="peliculaEnCine"></app-listado-peliculas>
+<app-listado-peliculas [peliculas]="peliculaEnCine" (borrada)="peliculaBorrada()"></app-listado-peliculas>
 </div>
 <h2 class="text-start">Proximos Estrenos</h2>
 <div class="d-flex justify-content-center align-items-center flex-wrap">
-<app-listado-peliculas [peliculas]="peliculaProximoEstrenos"></app-listado-peliculas>
+<app-listado-peliculas [peliculas]="peliculaProximoEstrenos" (borrada)="peliculaBorrada()"></app-listado-peliculas>
 </div>

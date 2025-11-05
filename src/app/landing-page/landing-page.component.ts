@@ -14,11 +14,21 @@ export class LandingPageComponent{
   peliculasService = inject(PeliculasService);
 
   constructor(){
-    this.peliculasService.obtenerLandinPage().subscribe(modelo => {
+    this.cargarPeliculas();
+  }
+  
+  peliculaBorrada(){
+    this.cargarPeliculas();
+  }
+
+  cargarPeliculas(){
+    this.peliculasService.obtenerLandinPage().subscribe((modelo) => {
       this.peliculaEnCine = modelo.enCines;
       this.peliculaProximoEstrenos = modelo.proximosEstrenos;
-    })
+    });
   }
+    
+  
 
   peliculaEnCine!: any[];
   peliculaProximoEstrenos!: any[];

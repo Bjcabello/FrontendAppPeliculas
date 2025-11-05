@@ -22,7 +22,7 @@
           </div>
           <div class="d-flex justify-content-between">
             <button mat-flat-button class="secondary" [routerLink]="['pelicula/editar', pelicula.id]">Editar</button>
-            <button mat-flat-button class="warn" >Borrar</button>
+            <button mat-flat-button class="warn" [swal]="{title: 'confirmacion', text: 'Deseas borrar el registro?', showCancelButton: true}" (confirm)="borrar(pelicula.id)" >Borrar</button>
           </div>
         </div>
       }
