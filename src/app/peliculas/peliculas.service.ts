@@ -2,40 +2,51 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
-import { LandingPageDto, PeliculaCreacionDTO, PeliculaDTO, PeliculasPostGetDTO } from './peliculas';
+import { LandingPageDto, PeliculaCreacionDTO, PeliculaDTO, PeliculasPostGetDTO, PeliculasPutGetDTO } from './peliculas';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PeliculasService {
-
-  constructor() { }
+  constructor() {}
   private http = inject(HttpClient);
   private urlBase = environment.apiUrl + '/peliculas';
 
-  public obtenerLandinPage(): Observable<LandingPageDto>{
-    return this.http.get<LandingPageDto>(`${this.urlBase}/landing`)
+  public obtenerLandinPage(): Observable<LandingPageDto> {
+    return this.http.get<LandingPageDto>(`${this.urlBase}/landing`);
   }
 
-  public crearGet(): Observable<PeliculasPostGetDTO>{
+  public crearGet(): Observable<PeliculasPostGetDTO> {
     return this.http.get<PeliculasPostGetDTO>(`${this.urlBase}/postget`);
   }
 
-  public crear(pelicula: PeliculaCreacionDTO): Observable<PeliculaDTO>{
+  public crear(pelicula: PeliculaCreacionDTO): Observable<PeliculaDTO> {
     const formData = this.construirFormData(pelicula);
-    return this.http.post<PeliculaDTO>(this.urlBase, formData)
+    return this.http.post<PeliculaDTO>(this.urlBase, formData);
   }
 
-  private construirFormData(pelicula: PeliculaCreacionDTO): FormData{
-    const formData = new FormData();
-    formData.append("titulo", pelicula.titulo);
-    formData.append('fechaLanzamiento', pelicula.fechaLanzamiento.toISOString().split('T')[0])
+  public actualizarGet(id: number): Observable<PeliculasPutGetDTO> {
+    return this.http.get<PeliculasPutGetDTO>(`${this.urlBase}/putget/${id}`);
+  }
 
-    if (pelicula.poster){
+  public actualizar(id: number, pelicula: PeliculaCreacionDTO) {
+    const formData = this.construirFormData(pelicula);
+    return this.http.put(`${this.urlBase}/${id}`, formData);
+  }
+
+  private construirFormData(pelicula: PeliculaCreacionDTO): FormData {
+    const formData = new FormData();
+    formData.append('titulo', pelicula.titulo);
+    formData.append(
+      'fechaLanzamiento',
+      pelicula.fechaLanzamiento.toISOString().split('T')[0]
+    );
+
+    if (pelicula.poster) {
       formData.append('poster', pelicula.poster);
     }
 
-    if (pelicula.trailer){
+    if (pelicula.trailer) {
       formData.append('trailer', pelicula.trailer);
     }
 
