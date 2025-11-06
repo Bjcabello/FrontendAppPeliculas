@@ -7,7 +7,7 @@
     <div class="d-flex flex-wrap">
       @for (pelicula of peliculas; track $index) {
         <div class="border-5">
-          <a>
+          <a routerLink="['/pelicula', pelicula.id]">
             @if (pelicula.poster) {
             <img [src]="pelicula.poster" class="ms-3 card-img-top" alt="..." [style.width.px]="180" [style.height.px]="150">
               } @else {
@@ -15,7 +15,7 @@
               }
           </a>
           <p class="text-center fw-bolder">
-          {{pelicula.titulo}}
+          <a [routerLink]="['/pelicula', pelicula.id]">{{pelicula.titulo}}</a>
           </p>
           <div class="d-flex justify-content-center">
             <app-rating [maximoRating]="5" (votado)="procesarVoto($event)"></app-rating>

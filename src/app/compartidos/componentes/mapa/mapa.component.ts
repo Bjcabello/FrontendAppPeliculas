@@ -20,18 +20,28 @@ import { Coordenada } from './coordenada';
 })
 export class MapaComponent implements OnInit {
   ngOnInit(): void {
-    this.capas = this.coordenadaInicial.map((valor) =>{
-      const marcador = marker([valor.latitud, valor.longitud], this.markerOptions);
+    this.capas = this.coordenadaInicial.map((valor) => {
+      const marcador = marker(
+        [valor.latitud, valor.longitud],
+        this.markerOptions
+      );
+
+      if(valor.texto){
+        marcador.bindPopup(valor.texto, {autoClose: false, autoPan:false});
+      }
+
       return marcador;
     });
-      
-    
   }
+
+  @Input()
+  soloLectura = false;
+
   @Input()
   coordenadaInicial: Coordenada[] = [];
 
   @Output()
-  coordenadaSeleccionada = new EventEmitter<Coordenada>
+  coordenadaSeleccionada = new EventEmitter<Coordenada>();
 
   markerOptions: MarkerOptions = {
     icon: icon({
@@ -40,7 +50,7 @@ export class MapaComponent implements OnInit {
       iconUrl: 'assets/marker-icon.png',
       iconRetinaUrl: 'assets/marker-icon-2x.png',
       shadowUrl: 'assets/marker-shadow.png',
-    })
+    }),
   };
 
   options = {
@@ -57,11 +67,16 @@ export class MapaComponent implements OnInit {
   capas: Marker<any>[] = [];
 
   manejarClick(event: LeafletMouseEvent) {
+
+    if(this.soloLectura){
+      return;
+    }
+
     const latitud = event.latlng.lat;
     const longitud = event.latlng.lng;
 
     this.capas = [];
     this.capas.push(marker([latitud, longitud], this.markerOptions));
-    this.coordenadaSeleccionada.emit({latitud, longitud});
+    this.coordenadaSeleccionada.emit({ latitud, longitud });
   }
 }
