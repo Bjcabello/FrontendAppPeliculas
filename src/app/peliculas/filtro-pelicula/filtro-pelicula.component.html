@@ -7,7 +7,7 @@
     class="d-flex flex-column p-4 border rounded shadow bg-white mb-4"
 
   >
-    <div class="d-flex justify-content-between mb-3 gap-3">
+    <div class="d-flex flex-column mb-3 gap-3">
       <mat-form-field appearance="outline" class="flex-fill">
         <mat-label>Título</mat-label>
         <input matInput [formControl]="form.controls.titulo" title="Título de la película" />
@@ -22,7 +22,7 @@
           }
         </mat-select>
       </mat-form-field>
-      <div class="d-flex flex-column">
+      <div class="">
         <mat-checkbox [formControl]="form.controls.proximosEstrenos">Próximos Estrenos</mat-checkbox>
         <mat-checkbox [formControl]="form.controls.enCines">En Cines</mat-checkbox>
       </div>
@@ -39,5 +39,10 @@
     <app-listado-peliculas class="ms-5 " [peliculas]="peliculas"></app-listado-peliculas>
   </div>
 
-
+  <mat-paginator showFirstLastButtons 
+  [length]="cantidadTotalRegistros"
+   [pageIndex]="paginacion.pagina"
+    [pageSize]="paginacion.recordsPorPagina"
+      [pageSizeOptions]="[5, 10, 50]" class="mat-elevation-z8"
+        (page)="actualizarPaginacion($event)"></mat-paginator>
 </div>

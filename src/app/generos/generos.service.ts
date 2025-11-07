@@ -26,6 +26,10 @@ export class GenerosService
     });
   }
 
+  public obtenerTodos(): Observable<GeneroDTO[]>{
+    return this.http.get<GeneroDTO[]>(`${this.urlBase}/todos`);
+  }
+
   public obtenerPorId(id: number): Observable<GeneroDTO> {
     return this.http.get<GeneroDTO>(`${this.urlBase}/${id}`);
   }
