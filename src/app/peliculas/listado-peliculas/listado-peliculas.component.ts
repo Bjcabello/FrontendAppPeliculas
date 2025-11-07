@@ -7,6 +7,7 @@ import { RatingComponent } from "../../compartidos/componentes/rating/rating.com
 import { RouterLink } from '@angular/router';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { PeliculasService } from '../peliculas.service';
+import { AutorizadoComponent } from "../../seguridad/autorizado/autorizado.component";
 
 
 @Component({
@@ -17,8 +18,9 @@ import { PeliculasService } from '../peliculas.service';
     MatIconModule,
     RatingComponent,
     RouterLink,
-    SweetAlert2Module
-  ],
+    SweetAlert2Module,
+    AutorizadoComponent
+],
   templateUrl: './listado-peliculas.component.html',
   styleUrl: './listado-peliculas.component.css',
 })
@@ -35,7 +37,7 @@ export class ListadoPeliculasComponent {
     this.peliculasService.borrar(id)
     .subscribe(() => this.borrado.emit())
   }
-  
+
   procesarVoto(voto: number) {
     alert(`Calificacion Otorgada: ${voto}`);
   }

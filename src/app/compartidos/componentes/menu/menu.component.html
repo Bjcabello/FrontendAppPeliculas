@@ -11,28 +11,34 @@
       <h4>Buscar Pelicula</h4>
     </a>
   </div>
-  <div >
-    <a mat-button routerLink="generos">
-      <mat-icon>local_offer</mat-icon>
-      <h4>Géneros</h4>
-    </a>
-  </div>
-  <div >
-    <a mat-button routerLink="actores">
-      <mat-icon>person</mat-icon>
-      <h4>Actores</h4>
-    </a>
-  </div>
-  <div >
-    <a mat-button routerLink="cines">
-      <mat-icon>movie</mat-icon>
-      <h4>Cines</h4>
-    </a>
-  </div>
-  <div>
-    <a mat-button routerLink="pelicula/crear">
-      <mat-icon>create</mat-icon>
-      <h4>Crear Película</h4>
-    </a>
-  </div>
+
+  <app-autorizado rol="admin">
+    <ng-container autorizado>
+      <div >
+      <a mat-button routerLink="generos">
+        <mat-icon>local_offer</mat-icon>
+        <h4>Géneros</h4>
+      </a>
+      </div>
+      <div >
+        <a mat-button routerLink="actores">
+          <mat-icon>person</mat-icon>
+          <h4>Actores</h4>
+        </a>
+      </div>
+      <div >
+        <a mat-button routerLink="cines">
+          <mat-icon>movie</mat-icon>
+          <h4>Cines</h4>
+        </a>
+      </div>
+      <div>
+        <a mat-button routerLink="pelicula/crear">
+          <mat-icon>create</mat-icon>
+          <h4>Crear Película</h4>
+        </a>
+      </div>
+    </ng-container>
+  </app-autorizado>
+
 </mat-toolbar>

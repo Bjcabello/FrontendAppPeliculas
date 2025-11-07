@@ -17,12 +17,16 @@
           <p class="text-center fw-bolder">
           <a [routerLink]="['/pelicula', pelicula.id]">{{pelicula.titulo}}</a>
           </p>
+          <app-autorizado rol="admin">
+            <ng-container autorizado>
+                <div class="d-flex justify-content-between">
+                  <button mat-flat-button class="secondary" [routerLink]="['pelicula/editar', pelicula.id]">Editar</button>
+                  <button mat-flat-button class="warn" [swal]="{title: 'confirmacion', text: 'Deseas borrar el registro?', showCancelButton: true}" (confirm)="borrar(pelicula.id)" >Borrar</button>
+                </div>
+            </ng-container>
+          </app-autorizado>
           <div class="d-flex justify-content-center">
             <app-rating [maximoRating]="5" (votado)="procesarVoto($event)"></app-rating>
-          </div>
-          <div class="d-flex justify-content-between">
-            <button mat-flat-button class="secondary" [routerLink]="['pelicula/editar', pelicula.id]">Editar</button>
-            <button mat-flat-button class="warn" [swal]="{title: 'confirmacion', text: 'Deseas borrar el registro?', showCancelButton: true}" (confirm)="borrar(pelicula.id)" >Borrar</button>
           </div>
         </div>
       }

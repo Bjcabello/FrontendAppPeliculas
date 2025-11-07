@@ -2,10 +2,11 @@ import { Component, inject, OnInit } from '@angular/core';
 import { ListadoPeliculasComponent } from '../peliculas/listado-peliculas/listado-peliculas.component';
 import { MenuComponent } from '../compartidos/componentes/menu/menu.component';
 import { PeliculasService } from '../peliculas/peliculas.service';
+import { AutorizadoComponent } from "../seguridad/autorizado/autorizado.component";
 
 @Component({
   selector: 'app-landing-page',
-  imports: [ListadoPeliculasComponent],
+  imports: [ListadoPeliculasComponent, AutorizadoComponent],
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.css',
 })
@@ -16,7 +17,7 @@ export class LandingPageComponent{
   constructor(){
     this.cargarPeliculas();
   }
-  
+
   peliculaBorrada(){
     this.cargarPeliculas();
   }
@@ -27,8 +28,8 @@ export class LandingPageComponent{
       this.peliculaProximoEstrenos = modelo.proximosEstrenos;
     });
   }
-    
-  
+
+
 
   peliculaEnCine!: any[];
   peliculaProximoEstrenos!: any[];

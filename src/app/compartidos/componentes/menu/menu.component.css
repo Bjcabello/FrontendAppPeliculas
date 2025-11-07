@@ -9,3 +9,7 @@ a.mat-button {
   align-items: center;
   width: 100%;
 }
+
+app-autorizado{
+  display: flex;
+}
