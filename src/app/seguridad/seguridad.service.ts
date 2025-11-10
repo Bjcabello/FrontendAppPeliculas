@@ -8,43 +8,68 @@ import { Observable, tap } from 'rxjs';
   providedIn: 'root',
 })
 export class SeguridadService {
-
   constructor() {}
 
   private http = inject(HttpClient);
   private urlBase = environment.apiUrl + '/usuarios';
-  private readonly llaveToken = "token";
+  private readonly llaveToken = 'token';
   private readonly llaveExpiracion = 'token-expiracion';
 
-  registrar(credenciales: CredencialesUsuarioDTO): Observable<RespuestaAutenticacionDTO> {
+  registrar(
+    credenciales: CredencialesUsuarioDTO
+  ): Observable<RespuestaAutenticacionDTO> {
     return this.http
-      .post<RespuestaAutenticacionDTO>(`${this.urlBase}/registrar`, credenciales)
-      .pipe(
-        tap(respuesta => this.guardarToken(respuesta))
-      );
+      .post<RespuestaAutenticacionDTO>(
+        `${this.urlBase}/registrar`,
+        credenciales
+      )
+      .pipe(tap((respuesta) => this.guardarToken(respuesta)));
   }
 
-  login(credenciales: CredencialesUsuarioDTO): Observable<RespuestaAutenticacionDTO>{
+  login(
+    credenciales: CredencialesUsuarioDTO
+  ): Observable<RespuestaAutenticacionDTO> {
     return this.http
       .post<RespuestaAutenticacionDTO>(`${this.urlBase}/login`, credenciales)
       .pipe(
-        tap(respuestaAutenticacion => this.guardarToken(respuestaAutenticacion)));
+        tap((respuestaAutenticacion) =>
+          this.guardarToken(respuestaAutenticacion)
+        )
+      );
   }
 
-  guardarToken(respuestaAutenticacion: RespuestaAutenticacionDTO){
+  guardarToken(respuestaAutenticacion: RespuestaAutenticacionDTO) {
     localStorage.setItem(this.llaveToken, respuestaAutenticacion.token);
-    localStorage.setItem(this.llaveExpiracion, respuestaAutenticacion.expiracion.toString());
+    localStorage.setItem(
+      this.llaveExpiracion,
+      respuestaAutenticacion.expiracion.toString()
+    );
+  }
+
+  obtenerCampoJWT(campo: string): string {
+    const token = localStorage.getItem(this.llaveToken); // 👈 aquí estaba el error
+    if (!token) {
+      return '';
+    }
+
+    try {
+      const dataToken = JSON.parse(atob(token.split('.')[1]));
+      return dataToken[campo] ?? '';
+    } catch (error) {
+      console.error('Error al decodificar el token JWT:', error);
+      return '';
+    }
   }
 
   estalogueado(): boolean {
-    const token = localStorage.getItem(this.llaveToken)
-    if(!token){
+    const token = localStorage.getItem(this.llaveToken);
+    if (!token) {
       return false;
     }
     const expiracion = localStorage.getItem(this.llaveExpiracion)!;
     const expiracionFecha = new Date(expiracion);
 
-    if(expiracionFecha <= new Date()){
+    if (expiracionFecha <= new Date()) {
       this.logout();
       return false;
     }
@@ -52,7 +77,7 @@ export class SeguridadService {
     return true;
   }
 
-  logout(){
+  logout() {
     localStorage.removeItem(this.llaveToken);
     localStorage.removeItem(this.llaveExpiracion);
   }

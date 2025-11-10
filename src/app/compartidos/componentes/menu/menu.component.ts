@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterLink } from '@angular/router';
 import { AutorizadoComponent } from "../../../seguridad/autorizado/autorizado.component";
+import { SeguridadService } from '../../../seguridad/seguridad.service';
 
 
 @Component({
@@ -12,4 +13,7 @@ import { AutorizadoComponent } from "../../../seguridad/autorizado/autorizado.co
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.css',
 })
-export class MenuComponent {}
+export class MenuComponent {
+
+  seguridadService = inject(SeguridadService);
+}

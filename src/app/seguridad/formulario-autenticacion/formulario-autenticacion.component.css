@@ -1,0 +1,10 @@
+.formulario-centro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.formulario-centro mat-form-field {
+  width: 400px;
+  margin-bottom: 1rem;
+}

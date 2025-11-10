@@ -13,3 +13,7 @@ a.mat-button {
 app-autorizado{
   display: flex;
 }
+.saludo{
+  font-size: 18px;
+  display: inline;
+}

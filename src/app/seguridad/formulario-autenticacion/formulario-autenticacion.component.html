@@ -1,0 +1,24 @@
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="text-center">
+    <h2>{{titulo}}</h2>
+    <app-mostrar-errores [errores]="errores"></app-mostrar-errores>
+
+    <form (submit)="guardarCambios()" [formGroup]="form">
+      <div class="d-flex flex-column justify-content-center align-items-center">
+        <mat-form-field appearance="outline" [style.width.px]="400">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput [formControl]="form.controls.email" placeholder="Ingrese el email" />
+          <mat-error>{{obtenerMensajeErrorEmail()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" [style.width.px]="400">
+          <mat-label>Contraseña</mat-label>
+          <input type="password" matInput [formControl]="form.controls.password" placeholder="Ingrese la contraseña"/>
+          <mat-error>{{obtenerMensajeErrorPassword()}}</mat-error>
+        </mat-form-field>
+
+        <button mat-flat-button type="submit" [disabled]="form.invalid">Guardar</button>
+      </div>
+    </form>
+  </div>
+</div>

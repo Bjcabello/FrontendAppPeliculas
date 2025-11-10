@@ -15,6 +15,7 @@ import { FiltroPeliculaComponent } from './peliculas/filtro-pelicula/filtro-peli
 import { DetallePeliculaComponent } from './peliculas/detalle-pelicula/detalle-pelicula.component';
 import { esAdminGuard } from './compartidos/guards/es-admin.guard';
 import { LoginComponent } from './seguridad/login/login.component';
+import { RegistroComponent } from './seguridad/registro/registro.component';
 
 export const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -32,5 +33,6 @@ export const routes: Routes = [
   { path: 'pelicula/filtrar', component: FiltroPeliculaComponent},
   { path: 'pelicula/:id', component: DetallePeliculaComponent },
   { path: 'login', component: LoginComponent},
+  { path: 'registrar', component: RegistroComponent},
   { path: '**', redirectTo: '' }
 ];
