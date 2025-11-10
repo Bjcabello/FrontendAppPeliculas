@@ -1,4 +1,6 @@
 mat-toolbar{
+  display: flex;
+  align-items: center;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -13,7 +15,28 @@ a.mat-button {
 app-autorizado{
   display: flex;
 }
+
+.espacio{
+  flex: 1 1 auto;
+}
 .saludo{
   font-size: 18px;
   display: inline;
+}
+
+.menu-izquierda {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.menu-derecha {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Este es el truco que empuja todo lo de la derecha */
+.spacer {
+  flex: 1 1 auto;
 }

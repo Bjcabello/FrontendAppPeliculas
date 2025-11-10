@@ -83,6 +83,7 @@ export class SeguridadService {
   }
 
   obtenerRol() {
-    return 'admin';
+     if (!this.estalogueado()) return null; 
+     return 'admin';
   }
 }
