@@ -12,9 +12,10 @@
         </mat-chip>
       }
     </mat-chip-listbox>
-    | {{ pelicula.fechaLanzamiento.toDateString() }} | Promedio: 0.0 | tu voto: 0
+    | {{ pelicula.fechaLanzamiento.toDateString() }} | Promedio: {{pelicula.promedioVoto.toFixed(1)}} |
+     tu voto: <app-rating [maximoRating]="5" (votado)="puntuar($event)" [ratingSeleccionado]="pelicula.votoUsuario"></app-rating>
 
-    
+
     <div class="d-flex justify-content-between align-items-center mt-3 mb-3 flex-wrap text-center">
       <div class="flex-fill text-center">
         <img alt=""[src]="pelicula.poster"
