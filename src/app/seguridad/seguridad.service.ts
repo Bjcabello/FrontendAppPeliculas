@@ -1,8 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { CredencialesUsuarioDTO, RespuestaAutenticacionDTO } from './seguridad';
+import { CredencialesUsuarioDTO, RespuestaAutenticacionDTO, UsuarioDTO } from './seguridad';
 import { Observable, tap } from 'rxjs';
+import { PaginacionDTO } from '../compartidos/modelos/PaginacionDTO';
+import { construirQueryParams } from '../compartidos/funciones/construirQueryParams';
 
 @Injectable({
   providedIn: 'root',
@@ -14,6 +16,19 @@ export class SeguridadService {
   private urlBase = environment.apiUrl + '/usuarios';
   private readonly llaveToken = 'token';
   private readonly llaveExpiracion = 'token-expiracion';
+
+  obtenerUsuarioPaginado(paginacion: PaginacionDTO): Observable<HttpResponse<UsuarioDTO[]>>{
+    let queryParams = construirQueryParams(paginacion);
+    return this.http.get<UsuarioDTO[]>(`${this.urlBase}/ListadoUsuarios`, {params: queryParams, observe: 'response'});
+  }
+
+  hacerAdmin(email: string){
+    return this.http.post(`${this.urlBase}/HacerAdmin`, {email})
+  }
+
+  removerAdmin(email: string){
+    return this.http.post(`${this.urlBase}/RemoverAdmin`, {email})
+  }
 
   obtenerToken():string | null{
     return localStorage.getItem(this.llaveToken);
@@ -51,7 +66,7 @@ export class SeguridadService {
   }
 
   obtenerCampoJWT(campo: string): string {
-    const token = localStorage.getItem(this.llaveToken); // 👈 aquí estaba el error
+    const token = localStorage.getItem(this.llaveToken);
     if (!token) {
       return '';
     }
@@ -87,7 +102,13 @@ export class SeguridadService {
   }
 
   obtenerRol() {
-     if (!this.estalogueado()) return null;
-     return 'admin';
+    const esAdmin = this.obtenerCampoJWT('esadmin');
+    if (esAdmin){
+      return 'admin'
+    }else{
+      return '';
+    }
+    //  if (!this.estalogueado()) return null;
+    //  return 'admin';
   }
 }
