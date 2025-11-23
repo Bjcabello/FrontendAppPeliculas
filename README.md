@@ -59,7 +59,10 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
 
 
-# Instalar ngx-leaflet
+# Instalar 
+ng add @angular/material
+npm moment
+npm i @angular/material-moment-adapter
 npm install leaflet
 npm install @bluehalo/ngx-leaflet@19.0.0
 npm install --save-dev @types/leaflet
